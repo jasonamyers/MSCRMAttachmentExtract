@@ -1,0 +1,5 @@
+c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\bin\Debug\MSCRMAttachmentExtract.exe
+c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\bin\Debug\MSCRMAttachmentExtract.pdb
+c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.exe
+c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.pdb

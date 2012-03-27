@@ -84,7 +84,7 @@ namespace MSCRMAttachmentExtraction
                 {
                     Console.WriteLine(ex.Message);
                 }
-                connString = "Server=CCSSQL03;Database=Correct_Care_Solutions_MSCRM;User Id=crmfetch;password=crmfetcher";
+                connString = "Server=server;Database=database_MSCRM;User Id=username;password=password";
                 string queryEmailAttachments = "SELECT EA.Body,  EA.ActivityID,  EA.AttachmentNumber,  EA.FileName,CONVERT(varchar(255), EA.ActivityID) + '_' + CONVERT(varchar(255), EA.AttachmentNumber) + '_' + CONVERT(varchar(255), EA.Filename) AS SaveAsFileName FROM  FilteredEmailUS E JOIN  ActivityMimeAttachment EA ON E.ActivityID = EA.ActivityID WHERE  E.regardingobjecttypecode = 1 or E.regardingobjecttypecode = 2 or E.regardingobjecttypecode = 3 or E.regardingobjecttypecode = 4";
                 using (SqlConnection connection2 = new SqlConnection(connString))
                 {

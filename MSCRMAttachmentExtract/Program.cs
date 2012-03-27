@@ -44,8 +44,8 @@ namespace MSCRMAttachmentExtraction
 
         static void Main(string[] args)
         {
-            string connString = "Server=CCSSQL03;Database=Correct_Care_Solutions_MSCRM;User Id=crmfetch;password=crmfetcher";
-            string queryNonEmailAttachments = "SELECT top 20 DocumentBody, ObjectId, FileName, CONVERT(varchar(255), ObjectID) + '_' + CONVERT(varchar(255), Filename) AS SaveAsFileName FROM FilteredAnnotationUS WHERE IsDocument = 1 AND (objecttypecode = 1 or objecttypecode = 4212 or objecttypecode = 4201 or objecttypecode = 4210)";
+            string connString = "Server=servername;Database=Database_MSCRM;User Id=username;password=password";
+            string queryNonEmailAttachments = "SELECT DocumentBody, ObjectId, FileName, CONVERT(varchar(255), ObjectID) + '_' + CONVERT(varchar(255), Filename) AS SaveAsFileName FROM FilteredAnnotationUS WHERE IsDocument = 1 AND (objecttypecode = 1 or objecttypecode = 2 or objecttypecode = 3 or objecttypecode = 4 or objecttypecode = 4212 or objecttypecode = 4201 or objecttypecode = 4210)";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 SqlCommand command = new SqlCommand(queryNonEmailAttachments, connection);
@@ -58,11 +58,21 @@ namespace MSCRMAttachmentExtraction
                     int i = 0;
                     while (reader.Read())
                     {
-                        
                         string filePathAndName = "C:\\CRM\\NONEMAIL\\" + reader.GetString(3);
+                        /* 
+                         * Converts Latin-1 from the CRM database to UTF8 so we can use Base64 decoding to recreate the original file.
+                         */
                         string fileDataString = Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(reader.GetString(0)));
                         byte[] fileBytes = Convert.FromBase64String(fileDataString);
+
+                        /*
+                         * Writes the original file to disk
+                         */
                         bool fileWritten = ByteArrayToFile(filePathAndName, fileBytes);
+
+                        /*
+                         * Adds the record to the CSV reference file.
+                         */
                         file.WriteLine("\"{0}\",\"{1}\",\"{2}\"", reader.GetValue(1).ToString(), reader.GetString(2), reader.GetString(3));
                         i++;
                     }
@@ -75,7 +85,7 @@ namespace MSCRMAttachmentExtraction
                     Console.WriteLine(ex.Message);
                 }
                 connString = "Server=CCSSQL03;Database=Correct_Care_Solutions_MSCRM;User Id=crmfetch;password=crmfetcher";
-                string queryEmailAttachments = "SELECT TOP 20 EA.Body,  EA.ActivityID,  EA.AttachmentNumber,  EA.FileName,CONVERT(varchar(255), EA.ActivityID) + '_' + CONVERT(varchar(255), EA.AttachmentNumber) + '_' + CONVERT(varchar(255), EA.Filename) AS SaveAsFileName FROM  FilteredEmailUS E JOIN  ActivityMimeAttachment EA ON E.ActivityID = EA.ActivityID WHERE  E.regardingobjecttypecode = 1";
+                string queryEmailAttachments = "SELECT EA.Body,  EA.ActivityID,  EA.AttachmentNumber,  EA.FileName,CONVERT(varchar(255), EA.ActivityID) + '_' + CONVERT(varchar(255), EA.AttachmentNumber) + '_' + CONVERT(varchar(255), EA.Filename) AS SaveAsFileName FROM  FilteredEmailUS E JOIN  ActivityMimeAttachment EA ON E.ActivityID = EA.ActivityID WHERE  E.regardingobjecttypecode = 1 or E.regardingobjecttypecode = 2 or E.regardingobjecttypecode = 3 or E.regardingobjecttypecode = 4";
                 using (SqlConnection connection2 = new SqlConnection(connString))
                 {
                     SqlCommand command2 = new SqlCommand(queryEmailAttachments, connection);
@@ -89,7 +99,7 @@ namespace MSCRMAttachmentExtraction
                         while (reader.Read())
                         {
 
-                            string filePathAndName = "C:\\CRM\\EMAIL\\" + reader.GetString(3);
+                            string filePathAndName = "C:\\CRM\\EMAIL\\" + reader.GetString(4);
                             string fileDataString = Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(reader.GetString(0)));
                             byte[] fileBytes = Convert.FromBase64String(fileDataString);
                             bool fileWritten = ByteArrayToFile(filePathAndName, fileBytes);
@@ -104,13 +114,10 @@ namespace MSCRMAttachmentExtraction
                     {
                         Console.WriteLine(ex.Message);
                     }
-
                 }
                 Console.ReadLine();
+
             }
         }
-
-
-
     }
 }

@@ -3,3 +3,10 @@ c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MS
 c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.exe
 c:\users\jamyers\documents\visual studio 2010\Projects\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.pdb
+F:\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.exe
+F:\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.pdb
+C:\Users\Jason\Desktop\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.exe
+C:\Users\Jason\Desktop\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\MSCRMAttachmentExtract.pdb
+C:\Users\Jason\Desktop\MSCRMAttachmentExtract\MSCRMAttachmentExtract\bin\Debug\MSCRMAttachmentExtract.exe
+C:\Users\Jason\Desktop\MSCRMAttachmentExtract\MSCRMAttachmentExtract\bin\Debug\MSCRMAttachmentExtract.pdb
+C:\Users\Jason\Desktop\MSCRMAttachmentExtract\MSCRMAttachmentExtract\obj\x86\Debug\ResolveAssemblyReference.cache

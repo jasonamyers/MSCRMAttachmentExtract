@@ -1,1 +1,3 @@
-This is used to grab attachments out of Microsoft CRM.
+This is used to extract Account, Lead, Opportunity, Activity Notes, and Contacts.  It will also grab attachments out of Microsoft CRM that are both Email and NonEmail based.  For more Information see:
+
+http://binarydelusions.com/2012/03/26/extracting-microsoft-crm-attachments-for-salesforce-migration/
